@@ -18,7 +18,8 @@ mail malveillant. Cela correspond au Port destinataire 993 : Imap over implicit 
 ![img](./images/3.png)
 
 Enfin le troisième indice dans l'énoncé est que le payload du mail est assez volumineux.
-La ligne recherchée est celle qui à le plus gros bytecount, et le flag est donc FCSC{uid} avec l'uid de cette ligne.
+La ligne recherchée est celle qui à le plus gros bytecount, 102025.
+Le flag est donc FCSC{uid} avec l'uid de la ligne en question.
 
 
 
