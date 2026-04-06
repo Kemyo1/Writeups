@@ -6,11 +6,16 @@ Une compromission a été observée sur la machine dont l'adresse IP est 192.168
 ---
 J'ai travaillé entièrement sur Google Sheets pour ce challenge : 
 
+![img](./images/1.png)
+
 On nous indique que la victime a téléchargé une pièce jointe dans un mail.
 L'IP d'origine de la ligne recherchée correspond donc à celle de la victime.
 
+![img](./images/2.png)
 Le second critère pour réduire la liste : la compromission s'est fait par le téléchargement d'un 
 mail malveillant. Cela correspond au Port destinataire 993 : Imap over implicit Tls.
+
+![img](./images/3.png)
 
 Enfin le troisième indice dans l'énoncé est que le payload du mail est assez volumineux.
 La ligne recherchée est celle qui à le plus gros bytecount, et le flag est donc FCSC{uid} avec l'uid de cette ligne.
