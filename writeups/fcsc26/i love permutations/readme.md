@@ -60,7 +60,7 @@ avec **X** une permutation inconnue. On se retrouve donc avec un chiffrement bea
 
 Avec **6 requêtes** de la forme `Lᵢ | 0`, on peut deviner l'image de `0` à `63` par `X` et donc reconstruire la **matrice de X**.
 
-Li se constrtuit ainsi : son j-éme bit est égal à (j>>i)&1.
+Li se construit ainsi : son j-éme bit est égal à (j>>i)&1.
 
 À partir des 6 sorties, chaque position de sortie p donne un index 6 bits = X⁻¹(p).
 Ceci découle du fait que `2⁶=64`, qui est précisément la taille de l'entrée d'`encrypt`.
