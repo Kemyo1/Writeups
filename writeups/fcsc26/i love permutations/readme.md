@@ -57,14 +57,17 @@ avec **X** une permutation inconnue. On se retrouve donc avec un chiffrement bea
 
 ### Étape 1 — Reconstruire X
 
-Avec **6 requêtes** de la forme `Lᵢ | 0`, où chaque `Lᵢ` est un vecteur de base, on peut deviner l'image de `0` à `63` par `X` et donc reconstruire la **matrice de X**.
+Avec **6 requêtes** de la forme `Lᵢ | 0`, on peut deviner l'image de `0` à `63` par `X` et donc reconstruire la **matrice de X**.
 
+Li se constrtuit ainsi : son j-éme bit est égal à (j>>i)&1.
+
+À partir des 6 sorties, chaque position de sortie p donne un index 6 bits = X⁻¹(p).
 Ceci découle du fait que `2⁶=64`, qui est précisément la taille de l'entrée d'`encrypt`.
 
 ### Étape 2 — Retrouver Pk
 
-La seconde observation clé est que `r=101`, qui est **premier**. Donc `X⁻ʳ=Pk·P0` est unique.
+La seconde observation clé est que `r=101`, qui est premier. Donc `X⁻ʳ=Pk·P0` est unique.
 
-Comme on connaît `P0`, on en déduit **Pk** et on peut déchiffrer le flag normalement.
+Comme on connaît `P0`, on en déduit 'Pk' et on peut déchiffrer le flag normalement.
 
 ![img](./images/1.png)
