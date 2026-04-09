@@ -35,7 +35,8 @@ def encrypt(self, m):
     return self.bits_to_branch(l) + self.bits_to_branch(r)
 ```
 
-Pour `m = (l, r)` avec `l` et `r` différents de `0`, `encrypt(m)` applique `r` rounds de permutation sur `l` et `r` : d'abord une permutation aléatoire générée par l'état mélangé des bits de `l`/`r`, puis la permutation générée par la clé.
+Pour `m = (l, r)` avec `l` et `r` différents de `0`, `encrypt(m)` applique `R` rounds de permutations sur `l` et `r`.
+Plus précisément, chaque round c'est : l'application d'une permutation aléatoire générée par l'état mélangé des bits de `l`/`r`, puis la permutation générée par la clé k.
 
 ---
 
@@ -43,10 +44,10 @@ Pour `m = (l, r)` avec `l` et `r` différents de `0`, `encrypt(m)` applique `r` 
 
 Notons **Pₓ** la permutation générée par la seed `x`.
 
-On observe que si `m=(l,0)`, alors pour toute valeur de `r` :
+On observe que si `m=(l,0)`, alors peu importe le nombre de rounds R :
 
 ```
-encrypt(l,0)=(Pk·P0)^r(l) | 0=X(l) | 0
+encrypt(l,0)=(Pk·P0)^R (l) | 0=X(l) | 0
 ```
 
 avec **X** une permutation inconnue. On se retrouve donc avec un chiffrement beaucoup plus vulnérable.
@@ -66,7 +67,7 @@ Ceci découle du fait que `2⁶=64`, qui est précisément la taille de l'entré
 
 ### Étape 2 — Retrouver Pk
 
-La seconde observation clé est que `r=101`, qui est premier. Donc `X⁻ʳ=Pk·P0` est unique.
+La seconde observation clé est que `R=101`, qui est premier. Donc `X⁻ʳ=Pk·P0` est unique.
 
 Comme on connaît `P0`, on en déduit 'Pk' et on peut déchiffrer le flag normalement.
 
