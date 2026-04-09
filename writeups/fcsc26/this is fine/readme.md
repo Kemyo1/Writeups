@@ -1,4 +1,9 @@
 # FCSC26 - Crypto - This is fine
+## Mise en place
+
+```bash
+sage solver.sage
+```
 
 ## Contexte
 
