@@ -1,4 +1,4 @@
-# FCSC26 - Hardware - Grhelp - Maintenant, l'ESP!
+# FCSC26 - Hardware - Maintenant, l'ESP!
 
 ## Description
 
