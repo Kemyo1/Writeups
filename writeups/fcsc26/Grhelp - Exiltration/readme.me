@@ -1,0 +1,66 @@
+# FCSC26 - Forensic - Grhelp - Compromission Initiale
+
+## Énoncé
+The attacker appears to have successfully exfiltrated the backupfiler machine. Can you identify:
+
+-the tool used to exfiltrate the data
+
+-the absolute path of the exfiltrated file
+
+-the time the data was prepared for exfiltration (YYYY-MM-DDTHH:MM:SS in UTC)?
+
+The flag is the concatenation of the three responses: FCSC{tool-filepath-YYYY-MM-DDTHH:MM:SS}
+
+---
+
+## Résolution
+
+The description mentions the exfiltrate was on the backupfiler machine.
+So we only keep the lines of the logs about backupfiler
+
+```
+grep -Rh "backupfiler" . > ../backupfiler.txt
+```
+
+I extracted the archive and ran grep using several commands that relate to exfiltration.
+(imcp,cp,scp...)
+
+```
+grep -R "scp" backupfiler.txt  > scp.txt
+```
+
+```
+node=backupfiler.jurisdefense.intra type=SYSCALL msg=audit(1747213691.971:338148): arch=c000003e syscall=59 success=yes exit=0 a0=5645e0f21c30 a1=5645e0f21cd0 a2=5645e0f112c0 a3=5645e0f21de0 items=2 ppid=707181 pid=707182 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=(none) ses=3906 comm="scp" exe="/usr/bin/scp" subj=unconfined key="program_execution" ARCH=x86_64 SYSCALL=execve AUID="goadmin" UID="goadmin" GID="goadmin" EUID="goadmin" SUID="goadmin" FSUID="goadmin" EGID="goadmin" SGID="goadmin" FSGID="goadmin"
+node=backupfiler.jurisdefense.intra type=EXECVE msg=audit(1747213691.971:338148): argc=4 a0="scp" a1="/tmp/smb_share.tar.gz" a2="15.188.57.187"
+node=backupfiler.jurisdefense.intra type=PATH msg=audit(1747213691.971:338148): item=0 name="/usr/bin/scp" inode=6715 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0 OUID="root" OGID="root"
+node=backupfiler.jurisdefense.intra type=SYSCALL msg=audit(1747233078.466:341266): arch=c000003e syscall=59 success=yes exit=0 a0=613d96928c30 a1=613d96928cd0 a2=613d969182c0 a3=613d96928de0 items=2 ppid=708498 pid=708499 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=(none) ses=3916 comm="scp" exe="/usr/bin/scp" subj=unconfined key="program_execution" ARCH=x86_64 SYSCALL=execve AUID="goadmin" UID="goadmin" GID="goadmin" EUID="goadmin" SUID="goadmin" FSUID="goadmin" EGID="goadmin" SGID="goadmin" FSGID="goadmin"
+node=backupfiler.jurisdefense.intra type=EXECVE msg=audit(1747233078.466:341266): argc=3 a0="scp" a1="-f" a2="/home/goadmin/update"
+node=backupfiler.jurisdefense.intra type=PATH msg=audit(1747233078.466:341266): item=0 name="/usr/bin/scp" inode=6715 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0 OUID="root" OGID="root"
+```
+
+The first command, audit 1747213691.971:338148, is very suspicious.
+Indeed when looking at the arguments :
+`/tmp/smb_share.tar.gz` is clearly suspicious.
+`15.188.57.187` is also a suspicious IP when comparing it to the other IPs.
+
+Now all is left is to know when the archive was created.
+
+```
+grep -Rh "smb_share" backupfiler.txt > smb_share.txt
+```
+
+```
+node=backupfiler.jurisdefense.intra type=EXECVE msg=audit(1747213201.019:337832): argc=4 a0="tar" a1="cvzf" a2="/backups/backup_20250514090001.tar.gz" a3="/smb_share"
+node=backupfiler.jurisdefense.intra type=EXECVE msg=audit(1747213513.472:338023): argc=4 a0="tar" a1="cvzf" a2="smb_share.tar.gz" a3="/smb_share"
+node=backupfiler.jurisdefense.intra type=EXECVE msg=audit(1747213691.971:338148): argc=4 a0="scp" a1="/tmp/smb_share.tar.gz" a2="15.188.57.187"
+node=backupfiler.jurisdefense.intra type=EXECVE msg=audit(1747213701.323:338151): argc=2 a0="rm" a1="smb_share.tar.gz"
+node=backupfiler.jurisdefense.intra type=CWD msg=audit(1747213468.983:338022): cwd="/smb_share"
+```
+
+The second line creates `smb_share.tar.gz`.
+
+Convert the time into UTC and you get the flag :
+
+![](./images/1.png)
+
+---
