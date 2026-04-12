@@ -43,8 +43,11 @@ This allows us to filter the pcapng `wlan.fc.type_subtype == 0x0d && !(wlan.da =
 we deduce there are only 2 actual Vendor Specific Content bytes that interests us.
 
 More specifically the 2 bytes are in this form :
+
 -01 00 when E1 was broadcasting
+
 -02 X from E1 when unicasting to E2, where X is an actual byte of the flag
+
 -03 X from E2 to E1, where E2 is Acknowledging that he received a '02 X' action frame from E1.
 
 
@@ -52,7 +55,9 @@ More specifically the 2 bytes are in this form :
 
 All is left is to export the data payloads from the Action frames of both devices.
 Reconstruct the flag with the following algorithm :
+
 -If the last 4 byte are of the form 02 X, add it to the string
+
 -If the last 4 bytes are of the form 03 X, only add it to the string if the previous payload wasn't of the form 02 X.
 (Cheeky challmaker !)
 
