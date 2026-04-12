@@ -1,6 +1,6 @@
 # FCSC26 - Hardware - Grhelp - Maintenant, l'ESP!
 
-## Énoncé
+## Description
 
 Wi-Fi communication isn't limited to devices on the same access point. Direct communication between devices is possible using certain protocols. ESP-NOW is one example.
 
@@ -8,7 +8,7 @@ What were my two ESP32s talking about?
 
 ---
 
-## Résolution
+## Resolution
 
 We are given a pcapng file.
 
