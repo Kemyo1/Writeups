@@ -40,6 +40,8 @@ But for the bytes of the first loop, we observe that :
 Which means that you can reconstruct the flag byte per byte.
 And we know that the flag only contains alpha-numerical Ascii characters, which is a small window and doesn't take long to compute.
 
+The solver that i used is provided exceptionally since it's very small size and easy to understand and read.
+
 ![](./images/1.png)
 
 ---
