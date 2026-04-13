@@ -1,6 +1,6 @@
 # Writeup — FCSC26 - Crypto ** - I Love Permutations
 
-## Énoncé
+## Description du CTF
 
 On vous donne le chiffré du flag, que vous devez retrouver après avoir effectué **6 requêtes** à un oracle de chiffrement.
 
