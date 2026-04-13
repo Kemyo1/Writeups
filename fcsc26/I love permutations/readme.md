@@ -1,4 +1,4 @@
-# Writeup — FCSC26 - Crypto ** - I Love Permutations
+# FCSC26 - Crypto ** - I Love Permutations
 
 ## Description du CTF
 

@@ -1,4 +1,4 @@
-# FCSC26 - Forensic - Grhelp - Compromission Initiale
+# FCSC26 - Forensic - Grhelp - Exfiltration
 
 ## Énoncé
 The attacker appears to have successfully exfiltrated the backupfiler machine. Can you identify:
