@@ -38,10 +38,10 @@ node=backupfiler.jurisdefense.intra type=EXECVE msg=audit(1747233078.466:341266)
 node=backupfiler.jurisdefense.intra type=PATH msg=audit(1747233078.466:341266): item=0 name="/usr/bin/scp" inode=6715 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0 OUID="root" OGID="root"
 ```
 
-The first command, audit 1747213691.971:338148, is very suspicious.
-Indeed when looking at the arguments :
-`/tmp/smb_share.tar.gz` is clearly suspicious.
-`15.188.57.187` is also a suspicious IP when comparing it to the other IPs.
+The first command, audit 1747213691.971:338148, is very suspicious.  
+Indeed when looking at the arguments :  
+`/tmp/smb_share.tar.gz` is clearly suspicious.  
+`15.188.57.187` is also a suspicious IP when comparing it to the other IPs.  
 
 Now all is left is to know when the archive was created.
 
