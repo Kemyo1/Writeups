@@ -2,7 +2,7 @@
 
 ## Mise en place
 
-Extraire les fichiers fournis :
+Extraire les fichiers fournis (si vous n'avez pas l'archive, je fournis le fichier texte directement dans ce répertoire : output.txt) :
 
 ```bash
 tar -xf output.txt.tar
