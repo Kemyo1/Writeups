@@ -3,8 +3,8 @@ Quelques writeups de catégories diverses (cryptanalyse mais pas forcément) à 
 
 Classement dans les évenements auxquels j'ai participé :
 
-FCSC 25 : 48 https://fcsc.fr/users/163
+FCSC26 (Avril 2026) : 48 https://fcsc.fr/users/163
 
-404CTF 2025 : 112 
+404CTF 2025 (Mai 2025) : 112 
 
-FCSC 2025 : 582
+FCSC 2025 (Avril 2025): 582
