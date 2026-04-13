@@ -36,7 +36,8 @@ for i in range(256):
     d[i] = [ int(_) for _ in C.flatten() ]
 ```
 
-On nous fournit le contenu de `d`, le chiffré ainsi que l'IV utilisé. On doit donc partir de `d` pour retrouver les valeurs de `b`.
+Dans output.txt, On nous fournit le contenu de `d`: les valeurs de C, le chiffré ainsi que l'IV utilisé.  
+On doit donc partir de `d` pour retrouver les valeurs de `b`.
 
 ---
 
