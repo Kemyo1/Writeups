@@ -2,8 +2,9 @@
 
 ## Énoncé
 
-Convolutional codes are frequently used in wireless communication standards: in mobile networks, in Wi-Fi, but also in space transmissions. With a convolutional code, a message m(x) is multiplied bit by bit by two defined polynomials p1(x) and p2(x).
-For example, in GSM (also called second generation mobile network, 2G), two outputs are calculated: c1(x) = m(x) * p1(x) and c2(x) = m(x) * p2(x). The transmitted message alternately contains the bits of c1(x) and c2(x).
+Convolutional codes are frequently used in wireless communication standards: in mobile networks, in Wi-Fi, but also in space transmissions.  
+With a convolutional code, a message m(x) is multiplied bit by bit by two defined polynomials p1(x) and p2(x).  
+For example, in GSM (also called second generation mobile network, 2G), two outputs are calculated: c1(x) = m(x) * p1(x) and c2(x) = m(x) * p2(x). The transmitted message alternately contains the bits of c1(x) and c2(x).  
 Here, you have a flag encoded by the polynomials G0 = X^4 + X^3 + 1 and G1 = X^4 + X^3 + X + 1 defined in the GSM standard. Will you be able to recover the flag?
 
 ---
