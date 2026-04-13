@@ -41,7 +41,7 @@ node=backupfiler.jurisdefense.intra type=PATH msg=audit(1747233078.466:341266): 
 The first command, audit 1747213691.971:338148, is very suspicious.  
 Indeed when looking at the arguments :  
 `/tmp/smb_share.tar.gz` is clearly suspicious.  
-`15.188.57.187` is also a suspicious IP when comparing it to the other IPs.  
+`15.188.57.187` is also a suspicious IP when comparing it to the other IPs found throughout the logs.
 
 Now all is left is to know when the archive was created.
 
