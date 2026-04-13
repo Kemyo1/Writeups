@@ -1,28 +1,24 @@
 # FCSC26 - Forensic - Grhelp - Exfiltration
 
 ## Énoncé
-The attacker appears to have successfully exfiltrated the backupfiler machine. Can you identify:
-
--the tool used to exfiltrate the data
-
--the absolute path of the exfiltrated file
-
--the time the data was prepared for exfiltration (YYYY-MM-DDTHH:MM:SS in UTC)?
-
+The attacker appears to have successfully exfiltrated the backupfiler machine. Can you identify:  
+-the tool used to exfiltrate the data  
+-the absolute path of the exfiltrated file  
+-the time the data was prepared for exfiltration (YYYY-MM-DDTHH:MM:SS in UTC)?  
 The flag is the concatenation of the three responses: FCSC{tool-filepath-YYYY-MM-DDTHH:MM:SS}
 
 ---
 
 ## Résolution
 
-The description mentions the exfiltrate was on the backupfiler machine.
+The description mentions the exfiltrate was on the backupfiler machine.  
 So we only keep the lines of the logs about backupfiler
 
 ```
 grep -Rh "backupfiler" . > ../backupfiler.txt
 ```
 
-I extracted the archive and ran grep using several commands that relate to exfiltration.
+I extracted the archive and ran grep using several commands that relate to exfiltration.  
 (imcp,cp,scp...)
 
 ```
@@ -41,9 +37,8 @@ node=backupfiler.jurisdefense.intra type=PATH msg=audit(1747233078.466:341266): 
 The first command, audit 1747213691.971:338148, is very suspicious.  
 Indeed when looking at the arguments :  
 `/tmp/smb_share.tar.gz` is clearly suspicious.  
-`15.188.57.187` is also a suspicious IP when comparing it to the other IPs found throughout the logs.
-
-Now all is left is to know when the archive was created.
+`15.188.57.187` is also a suspicious IP when comparing it to the other IPs found throughout the logs.  
+Now all is left is to know when the archive was created.  
 
 ```
 grep -Rh "smb_share" backupfiler.txt > smb_share.txt
@@ -57,8 +52,7 @@ node=backupfiler.jurisdefense.intra type=EXECVE msg=audit(1747213701.323:338151)
 node=backupfiler.jurisdefense.intra type=CWD msg=audit(1747213468.983:338022): cwd="/smb_share"
 ```
 
-The second line creates `smb_share.tar.gz`.
-
+The second line creates `smb_share.tar.gz`.  
 Convert the time into UTC and you get the flag :
 
 ![](./images/1.png)
