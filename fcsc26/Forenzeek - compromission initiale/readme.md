@@ -44,4 +44,6 @@ La ligne recherchée est celle qui a le plus gros `bytecount` : **102025**.
 FCSC{uid}
 ```
 
-Avec l'`uid` de la ligne identifiée à l'étape 3.
+Avec l'`uid` de la ligne identifiée à l'étape 3. (Ligne 45315, Colonne B, sur l'image en haut.)
+
+![](./images/4.png)
