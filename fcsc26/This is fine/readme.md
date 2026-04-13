@@ -30,6 +30,7 @@ Pour chaque polynôme, trouver une valeur telle que, si on l'évalue deux fois, 
 
 Ceci se produit lorsque la valeur stockée est petite, entre **-5 et 256**.
 > Source : [docs.python.org — C API / Long](https://docs.python.org/3/c-api/long.html)
+
 ![img](./images/1.png)
 Comme l'évaluation du polynôme est considérée comme un byte du flag, on sait qu'il faut trouver `x` tel que `p(x)` soit entre **0 et 255** pour chaque polynôme de `L`.
 
