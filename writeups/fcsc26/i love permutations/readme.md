@@ -1,10 +1,4 @@
 # Writeup — FCSC26 - Crypto ** - I Love Permutations
-## Mise en place
-
-```bash
-python solver.py
-```
----
 
 ## Énoncé
 
