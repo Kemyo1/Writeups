@@ -29,22 +29,22 @@ def encrypt(self, m):
     return self.bits_to_branch(l) + self.bits_to_branch(r)
 ```
 
-Pour `m = (l, r)` avec `l` et `r` différents de `0`, `encrypt(m)` applique `R` rounds de permutations sur `l` et `r`.
+Pour `m = (l, r)` avec `l` et `r` différents de `0`, `encrypt(m)` applique `R` rounds de permutations sur `l` et `r`.  
 Plus précisément, chaque round c'est : l'application d'une permutation aléatoire générée par l'état mélangé des bits de `l`/`r`, puis la permutation générée par la clé k.
 
 ---
 
 ## Analyse et vulnérabilité
 
-Notons **Pₓ** la permutation générée par la seed `x`.
-
+Notons **Pₓ** la permutation générée par la seed `x`.  
 On observe que si `m=(l,0)`, alors peu importe le nombre de rounds R :
 
 ```
 encrypt(l,0)=(Pk·P0)^R (l) | 0=X(l) | 0
 ```
 
-avec **X** une permutation inconnue. On se retrouve donc avec un chiffrement beaucoup plus vulnérable.
+avec **X** une permutation inconnue.  
+On se retrouve donc avec un chiffrement beaucoup plus vulnérable.
 
 ---
 
@@ -52,17 +52,13 @@ avec **X** une permutation inconnue. On se retrouve donc avec un chiffrement bea
 
 ### Étape 1 — Reconstruire X
 
-Avec **6 requêtes** de la forme `Lᵢ | 0`, on peut deviner l'image de `0` à `63` par `X` et donc reconstruire la **matrice de X**.
-
-Li se construit ainsi : son j-éme bit est égal à (j>>i)&1.
-
-À partir des 6 sorties, chaque position de sortie p donne un index 6 bits = X⁻¹(p).
-Ceci découle du fait que `2⁶=64`, qui est précisément la taille de l'entrée d'`encrypt`.
+Avec **6 requêtes** de la forme `Lᵢ | 0`, on peut deviner l'image de `0` à `63` par `X` et donc reconstruire la **matrice de X**.  
+Li se construit ainsi : son j-éme bit est égal à (j>>i)&1.  
+À partir des 6 sorties, chaque position de sortie p donne un index 6 bits = X⁻¹(p).  
+Ceci découle du fait que `2⁶=64`, qui est précisément la taille de l'entrée d'`encrypt`.  
 
 ### Étape 2 — Retrouver Pk
 
-La seconde observation clé est que `R=101`, qui est premier. Donc `X⁻ʳ=Pk·P0` est unique.
-
-Comme on connaît `P0`, on en déduit 'Pk' et on peut déchiffrer le flag normalement.
-
+La seconde observation clé est que `R=101`, qui est premier. Donc `X⁻ʳ=Pk·P0` est unique.  
+Comme on connaît `P0`, on en déduit 'Pk' et on peut déchiffrer le flag normalement.  
 ![img](./images/1.png)
