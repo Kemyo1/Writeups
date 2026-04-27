@@ -1,5 +1,5 @@
 # Writeups
-Quelques writeups de catégories diverses (cryptanalyse, attaque par canal auxiliaire mais pas seulement) de compétitions de Capture The Flag auxquels j'ai participé
+Quelques writeups de catégories diverses (cryptanalyse, attaque par canal auxiliaire et autres) de compétitions de Capture The Flag auxquels j'ai participé
 
 Classement dans les évenements auxquels j'ai participé :
 
