@@ -50,3 +50,14 @@ FCSC 2025 (Avril 2025): 582 https://hackropole.fr/fr/ranking/fcsc2025/
 #### Side Channel / Trace Analysis
 
 - [AES Distrace](./fcsc25/aes%20distrace/README.md) (2 stars challenge)
+
+
+### DGSE Root-ME CTF 2025 
+
+Mission 3 (Forensic) : https://gist.github.com/Kemyo1/9e865e1956b3f5e37f9a95f0d4ca751d
+
+Mission 4 (Pentest) : https://gist.github.com/Kemyo1/b9b5090ef8ec85272339b7611bc0e23f
+
+Mission 5 (Mobile) : https://gist.github.com/Kemyo1/d9cd404541b5d824e2cdc7da71160764
+
+Mission 6 (Osint) : https://gist.github.com/Kemyo1/f054499c7d20014f105dd8badc3b4dd7
