@@ -46,7 +46,7 @@ Il s'agit donc de trouver deux strings différents (particule_a != particule_b) 
 
 En vérifiant la documentation de bytes.fromhex():   
 
-![img](./images/1.png)
+![img](1.png)
 
 Il suffit donc de fournir 10 11 et 1011, qui sont techniquement des strings différents mais qui donnent le même résultat par la fonction bytes.fromhex().
 
